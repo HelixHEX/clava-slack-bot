@@ -18,7 +18,7 @@ const main = () => {
 
   app.use(morgan("dev"));
 
-  app.use(cors({ origin: "*" }));
+  // app.use(cors({ origin: "*" }));
 
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
@@ -37,7 +37,7 @@ const main = () => {
   socketModeClient.on('message', async ({ event }) => {
     await client.reactions.add({
       timestamp: event.ts,
-      name: 'thumbsup',
+      name: 'clava',
       channel: event.channel
     })
     console.log('Reaction added')
