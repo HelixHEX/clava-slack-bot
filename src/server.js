@@ -53,8 +53,8 @@ const main = () => {
   })();
 
   //prevent heroku from sleeping
-  const cronJob = new cron.CronJob("0 */25 * * * *", () => {
-    fetch("https://clava-slack-app.herokuapp.com/")
+  const cronJob = new cron.CronJob("0 */1 * * * *", () => {
+    fetch("https://clava-slack-bot.herokuapp.com/")
       .then((res) =>
         console.log(`response-ok: ${res.ok}, status: ${res.status}`)
       )
