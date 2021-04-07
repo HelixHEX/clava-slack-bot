@@ -72,18 +72,20 @@ import { client, socketModeClient } from './utils/slack'
 
 
 //listen for messages 
-socketModeClient.on('message', async ({ event }) => {
-  await client.reactions.add({
-    timestamp: event.ts,
-    name: 'clava',
-    channel: event.channel
-  })
-  console.log('Reaction added')
-});
+const main = async () => {
+  socketModeClient.on('message', async ({ event }) => {
+    await client.reactions.add({
+      timestamp: event.ts,
+      name: 'clava',
+      channel: event.channel
+    })
+    console.log('Reaction added')
+  });
 
-//start listening for messages
-(async () => {
+  //start listening for messages
   await socketModeClient.start(process.env.PORT).then(() => {
     console.log(`🚀 Server ready at http://localhost:${process.env.PORT}`);
   });
-})();
+}
+
+main()
